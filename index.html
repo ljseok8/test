@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대한투어</title>
+  <link href="css/style.css" type="text/css" rel="stylesheet">
+  <script src="./script/jquery-1.12.3.js"></script>
+<script>
+  $(document).ready(function(){
+
+//(b).insertBefore(a) : a의 앞에 b를 배치한다.     
+//1.1번 슬라이드의 앞쪽에 3번 슬라이드를 배치
+$('.slide>ul>li:last-child').insertBefore('.slide>ul>li:first-child');
+//2. 3번 슬라이드가 왼쪽으로 1200픽셀만큼 이동하여 1번이 화면중앙에 보이도록 한다.
+$('.slide>ul').css('margin-left','-1200px');
+//3. 움직이는 함수
+function moveSlide(){
+  $('.slide>ul').animate({'margin-left':'-2400px'},500,
+  function(){
+    $('.slide>ul>li:first-child').insertAfter('.slide>ul>li:last-child');
+    $('.slide>ul').css('margin-left','-1200px');
+  });
+}
+
+
+
+// 4. 3초마다 자동으로 움직이게 한다.
+let Timer = setInterval(moveSlide,3000);
+
+
+
+
+
+  });
+
+
+</script>  
+</head>
+<body>
+  <div id=wrap>
+    <header>
+      <div class="h_inner">상단헤더영역1200</div>
+    </header>
+
+    <main>
+      <section class="slide">
+        <ul>
+          <li>
+            <h3>마카오 가족여행</h3>
+            <a href="#" title="메인1">
+            <img src="./images/main01.jpg" alt="메인1">
+          </a>
+          </li>
+          <li>
+            <h3>해돋이 기차여행</h3>
+            <a href="#" title="메인2">
+            <img src="./images/main02.jpg" alt="메인2">
+          </a>
+          </li>
+          <li>
+            <h3>사계절 힐링 제주 온수풀</h3>
+            <a href="#" title="메인3">
+            <img src="./images/main03.jpg" alt="메인3">
+          </a>
+          </li>
+        </ul>
+
+      </section>
+      <article class="notice">공지사항</article>
+      <article class="gallery">갤러리</article>
+      <article class="icon">바로가기</article>
+
+    </main>
+
+  <footer>
+    <div class="f_inner">하단푸터영역1200</div>
+  </footer>
+
+  </div>
+  
+</body>
+</html>
